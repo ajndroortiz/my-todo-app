@@ -1,0 +1,7 @@
+rules:
+  indentation:
+    - 1
+    - size: 2
+  quotes:
+    - 1
+    - style: single
