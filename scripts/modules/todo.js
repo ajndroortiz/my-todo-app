@@ -23,5 +23,4 @@ class ToDo {
     button.parentNode.parentNode.removeChild(button.parentNode);
   }
 }
-
 export default ToDo;
