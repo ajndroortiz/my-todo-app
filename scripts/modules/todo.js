@@ -20,7 +20,9 @@ class ToDo {
   }
   deleteItem(e) {
     let button = e.target;
-    button.parentNode.parentNode.removeChild(button.parentNode);
+    if(button.tagName === 'BUTTON') {
+      button.parentNode.parentNode.removeChild(button.parentNode);
+    }
   }
 }
 export default ToDo;
