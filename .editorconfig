@@ -7,8 +7,8 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{php,html}]
+[*.{php,html,scss,css,js}]
 indent_size = 4
 
-[*.{yml,py,json,scss,css,js}]
+[*.{yml,py,json}]
 indent_size = 2

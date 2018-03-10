@@ -21,6 +21,7 @@
     "gulp-imagemin": "^4.0.0",
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
     "sanitize.scss": "^1.0.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
