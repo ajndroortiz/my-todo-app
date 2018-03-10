@@ -9036,7 +9036,7 @@ var toDo = new _todo2.default();
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -9044,41 +9044,50 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ToDo = function () {
-  function ToDo() {
-    _classCallCheck(this, ToDo);
+    function ToDo() {
+        _classCallCheck(this, ToDo);
 
-    this.newToDo = document.querySelector('.newToDo');
-    this.newToDoSubmit = document.querySelector('.submit');
-    this.todoMenu = document.querySelector('.todo-list__menu');
-    this.events();
-  }
+        this.newToDo = document.querySelector('.newToDo');
+        this.newToDoSubmit = document.querySelector('.submit');
+        this.todoMenu = document.querySelector('.todo-list__menu');
+        this.events();
+    }
 
-  _createClass(ToDo, [{
-    key: 'events',
-    value: function events() {
-      this.newToDoSubmit.addEventListener('click', this.addToDo.bind(this));
-      this.todoMenu.addEventListener('click', this.deleteItem.bind(this));
-    }
-  }, {
-    key: 'addToDo',
-    value: function addToDo() {
-      var todoValue = this.newToDo.value;
-      var newToDoItem = document.createElement('li');
-      var todoContent = '<input type="checkbox" class="completed">' + todoValue + '<button class="delete"> <i class="fa fa-trash-o"></i></button>';
-      newToDoItem.classList.add('todo-list__item');
-      newToDoItem.innerHTML = todoContent;
-      this.todoMenu.append(newToDoItem);
-      this.newToDo.value = '';
-    }
-  }, {
-    key: 'deleteItem',
-    value: function deleteItem(e) {
-      var button = e.target;
-      button.parentNode.parentNode.removeChild(button.parentNode);
-    }
-  }]);
+    _createClass(ToDo, [{
+        key: 'events',
+        value: function events() {
+            var _this = this;
 
-  return ToDo;
+            this.newToDoSubmit.addEventListener('click', this.addToDo.bind(this));
+            this.todoMenu.addEventListener('click', this.deleteItem.bind(this));
+            this.newToDo.addEventListener('keyup', function (e) {
+                if (e.keyCode == 13) {
+                    _this.addToDo();
+                }
+            });
+        }
+    }, {
+        key: 'addToDo',
+        value: function addToDo() {
+            var todoValue = this.newToDo.value;
+            var newToDoItem = document.createElement('li');
+            var todoContent = '<input type="checkbox" class="completed">' + todoValue + '<button class="delete"> <i class="fa fa-trash-o"></i></button>';
+            newToDoItem.classList.add('todo-list__item');
+            newToDoItem.innerHTML = todoContent;
+            this.todoMenu.append(newToDoItem);
+            this.newToDo.value = '';
+        }
+    }, {
+        key: 'deleteItem',
+        value: function deleteItem(e) {
+            var button = e.target;
+            if (button.tagName === 'BUTTON') {
+                button.parentNode.parentNode.removeChild(button.parentNode);
+            }
+        }
+    }]);
+
+    return ToDo;
 }();
 
 exports.default = ToDo;
