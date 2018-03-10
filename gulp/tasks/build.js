@@ -1,5 +1,9 @@
-const gulp = require( 'gulp' );
-const uglify = require( 'gulp-uglify' );
+const gulp    = require( 'gulp' );
+const cssNano = require( 'cssnano' );
+const sass    = require( 'gulp-sass' );
+const postcss = require( 'gulp-postcss' );
+const prefix  = require( 'autoprefixer' );
+const uglify  = require( 'gulp-uglify' );
 
 gulp.task( 'uglify', () => {
     return gulp.src( './build/js/app.bundle.js' )
@@ -8,7 +12,9 @@ gulp.task( 'uglify', () => {
 } );
 
 gulp.task( 'cssMin', () => {
-    return gulp.src( './build/style.css' )
+    return gulp.src( './style.scss' )
+        .pipe( sass() )
+        .pipe( postcss( [prefix, cssNano] ) )
         .pipe( gulp.dest( './dist/' ) );
 } );
 
